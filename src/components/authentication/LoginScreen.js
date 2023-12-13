@@ -29,7 +29,7 @@ export default function LoginScreen(props) {
         style={styles.backgroundImage}
       >
         <View style={styles.inputBlock}>
-          <Text style={styles.inputTitle}>Welcome back!</Text>
+          <Text style={styles.inputTitle} adjustsFontSizeToFit>Welcome back!</Text>
           <TextInput
             style={styles.inputField}
             placeholder="Username"

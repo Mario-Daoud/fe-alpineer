@@ -6,24 +6,13 @@ import theme from "../../styles/theme.style";
 
 import { BLOB_URL } from "@env";
 
-const zoomIn = {
-  0: {
-    opacity: 0,
-    scale: 0,
-  },
-  1: {
-    opacity: 1,
-    scale: 1,
-  },
-};
-
 export default function LocationItem(props) {
   const { location, index } = props;
   return (
     <Animatable.View
-      animation={zoomIn}
+      animation={"fadeInUp"}
       duration={700}
-      delay={(index * 100)}
+      delay={200 + (index * 100)}
     >
       <Pressable style={styles.itemContainer}>
         <Image
@@ -51,6 +40,7 @@ export default function LocationItem(props) {
 const styles = StyleSheet.create({
   itemContainer: {
     position: "relative",
+    alignSelf: "center",
     margin: theme.MARGIN.SMALL,
     width: "94%",
     height: 212,

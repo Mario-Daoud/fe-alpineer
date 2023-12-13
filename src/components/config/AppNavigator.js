@@ -6,16 +6,11 @@ import IonIcons from "react-native-vector-icons/Ionicons";
 import LoginScreen from "../authentication/LoginScreen";
 import RegisterScreen from "../authentication/RegisterScreen";
 import DiscoverScreen from "../home/DiscoverScreen";
+import SettingsScreen from "../settings/SettingsScreen";
 
 const AuthStack = createStackNavigator();
 const AuthNavigator = () => (
-  <AuthStack.Navigator
-    options={{
-      headerStyle: {
-        backgroundColor: "transparent",
-      },
-    }}
-  >
+  <AuthStack.Navigator>
     <AuthStack.Screen name="Login" component={LoginScreen} />
     <AuthStack.Screen name="Register" component={RegisterScreen} />
   </AuthStack.Navigator>
@@ -29,17 +24,27 @@ const TabNavigator = () => (
       component={DiscoverScreen}
       options={{
         tabBarShowLabel: false,
-        tabBarIcon: ({ focused, color, size }) => (
+        tabBarIcon: ({ color, size }) => (
           <IonIcons name="compass" size={size} color={color} />
         ),
       }}
     />
     <Tab.Screen
-      name="Settings"
+      name="Countries"
       component={DiscoverScreen}
       options={{
         tabBarShowLabel: false,
-        tabBarIcon: ({ focused, color, size }) => (
+        tabBarIcon: ({ color, size }) => (
+          <IonIcons name="flag" size={size} color={color} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Settings"
+      component={SettingsScreen}
+      options={{
+        tabBarShowLabel: false,
+        tabBarIcon: ({ color, size }) => (
           <IonIcons name="settings" size={size} color={color} />
         ),
       }}

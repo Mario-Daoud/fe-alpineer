@@ -30,7 +30,7 @@ export default function RegisterScreen(props) {
         style={styles.backgroundImage}
       >
         <View style={styles.inputBlock}>
-          <Text style={styles.inputTitle}>Create account</Text>
+          <Text style={styles.inputTitle} adjustsFontSizeToFit>Create account</Text>
           <TextInput
             style={styles.inputField}
             placeholder="Username"
