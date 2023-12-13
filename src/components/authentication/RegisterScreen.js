@@ -13,6 +13,8 @@ import { BLOB_URL } from "@env";
 import RegisterButton from "./RegisterButton";
 
 export default function RegisterScreen(props) {
+  const { navigation } = props;
+
   const [username, setUsername] = useState("username");
   const [password, setPassword] = useState("password");
   const [confirmPassword, setConfirmPassword] = useState("password");
@@ -48,6 +50,7 @@ export default function RegisterScreen(props) {
           />
           <RegisterButton
             user={{ username, password, confirmPassword }}
+            navigation={{ navigation }}
           />
           <Pressable onPress={() => onLoginLinkPress()}>
             <Text style={styles.registerLinkText}>

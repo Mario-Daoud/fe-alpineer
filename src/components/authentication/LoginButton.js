@@ -17,8 +17,7 @@ const onLoginPress = (props) => {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Login successful");
-        navigation.navigate("HomePage");
+        navigation.navigate("Main");
       } else {
         console.log("Login failed");
       }

@@ -24,9 +24,16 @@ export default {
     EXTRA_LARGE: 24,
     SUPER_LARGE: 32,
   },
+  FONTWEIGHT: {
+    LIGHT: "200",
+    REGULAR: "400",
+    NORMAL: "500",
+    SEMIBOLD: "600",
+    BOLD: "700",
+  },
   COLOR: {
     PRIMARY: "#FF5F15",
     SECONDARY: "black",
     TERTIARY: "skyblue",
-  }
+  },
 };

@@ -5,7 +5,7 @@ import IonIcons from "react-native-vector-icons/Ionicons";
 
 import LoginScreen from "../authentication/LoginScreen";
 import RegisterScreen from "../authentication/RegisterScreen";
-import HomeScreen from "../home/HomeScreen";
+import DiscoverScreen from "../home/DiscoverScreen";
 
 const AuthStack = createStackNavigator();
 const AuthNavigator = () => (
@@ -24,7 +24,26 @@ const AuthNavigator = () => (
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator>
-    <Tab.Screen name="Home" component={HomeScreen} />
+    <Tab.Screen
+      name="Discover"
+      component={DiscoverScreen}
+      options={{
+        tabBarShowLabel: false,
+        tabBarIcon: ({ focused, color, size }) => (
+          <IonIcons name="compass" size={size} color={color} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Settings"
+      component={DiscoverScreen}
+      options={{
+        tabBarShowLabel: false,
+        tabBarIcon: ({ focused, color, size }) => (
+          <IonIcons name="settings" size={size} color={color} />
+        ),
+      }}
+    />
   </Tab.Navigator>
 );
 
@@ -36,7 +55,7 @@ const RootNavigator = () => (
     }}
   >
     <RootStack.Screen name="Auth" component={AuthNavigator} />
-    <RootStack.Screen name="HomePage" component={TabNavigator} />
+    <RootStack.Screen name="Main" component={TabNavigator} />
   </RootStack.Navigator>
 );
 

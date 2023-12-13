@@ -4,8 +4,9 @@ import theme from "../../styles/theme.style";
 
 import { API_URL } from "@env";
 
-const onRegisterPress = (user) => {
-  const { username, password, confirmPassword } = user;
+const onRegisterPress = (props) => {
+  const { username, password, confirmPassword } = props.user;
+  const { navigation } = props.navigation;
 
   if (password !== confirmPassword) {
     console.log("Passwords do not match");
@@ -21,7 +22,7 @@ const onRegisterPress = (user) => {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Register successful");
+        navigation.goBack();
       } else {
         console.log("Register failed");
       }
@@ -32,12 +33,12 @@ const onRegisterPress = (user) => {
 };
 
 export default function RegisterButton(props) {
-  const { user } = props;
+  const { user, navigation } = props;
 
   return (
     <Pressable
       style={styles.registerButton}
-      onPress={() => onRegisterPress(user)}
+      onPress={() => onRegisterPress({ user, navigation })}
     >
       <Text style={styles.registerText}>Register</Text>
     </Pressable>
