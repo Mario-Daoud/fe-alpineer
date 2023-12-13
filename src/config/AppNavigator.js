@@ -3,10 +3,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import IonIcons from "react-native-vector-icons/Ionicons";
 
-import LoginScreen from "../authentication/LoginScreen";
-import RegisterScreen from "../authentication/RegisterScreen";
-import DiscoverScreen from "../home/DiscoverScreen";
-import SettingsScreen from "../settings/SettingsScreen";
+import LoginScreen from "../components/authentication/LoginScreen";
+import RegisterScreen from "../components/authentication/RegisterScreen";
+import DiscoverScreen from "../components/home/DiscoverScreen";
+import SettingsScreen from "../components/settings/SettingsScreen";
+import CountryScreen from "../components/countries/CountryScreen";
+import CountryLocaitons from "../components/countries/CountryLocations";
 
 const AuthStack = createStackNavigator();
 const AuthNavigator = () => (
@@ -16,13 +18,33 @@ const AuthNavigator = () => (
   </AuthStack.Navigator>
 );
 
+const DiscoverStack = createStackNavigator();
+const DiscoverNavigator = () => (
+  <DiscoverStack.Navigator>
+    <DiscoverStack.Screen name="Discover" component={DiscoverScreen} />
+  </DiscoverStack.Navigator>
+);
+
+const CountryStack = createStackNavigator();
+const CountryNavigator = () => (
+  <CountryStack.Navigator>
+    <CountryStack.Screen name="Countries" component={CountryScreen} />
+    <CountryStack.Screen
+      name="CountryLocations"
+      component={CountryLocaitons}
+      options={({ route }) => ({ title: route.params.country.name })}
+    />
+  </CountryStack.Navigator>
+);
+
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen
       name="Discover"
-      component={DiscoverScreen}
+      component={DiscoverNavigator}
       options={{
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarIcon: ({ color, size }) => (
           <IonIcons name="compass" size={size} color={color} />
@@ -31,8 +53,9 @@ const TabNavigator = () => (
     />
     <Tab.Screen
       name="Countries"
-      component={DiscoverScreen}
+      component={CountryNavigator}
       options={{
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarIcon: ({ color, size }) => (
           <IonIcons name="flag" size={size} color={color} />
@@ -43,6 +66,7 @@ const TabNavigator = () => (
       name="Settings"
       component={SettingsScreen}
       options={{
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarIcon: ({ color, size }) => (
           <IonIcons name="settings" size={size} color={color} />
