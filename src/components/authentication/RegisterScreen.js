@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   ImageBackground,
   Pressable,
@@ -9,17 +9,16 @@ import {
 } from "react-native";
 import theme from "../../styles/theme.style";
 
-import LoginButton from "./LoginButton";
-
 import { BLOB_URL } from "@env";
+import RegisterButton from "./RegisterButton";
 
-export default function LoginScreen(props) {
-  const { navigation } = props;
+export default function RegisterScreen(props) {
   const [username, setUsername] = useState("username");
   const [password, setPassword] = useState("password");
+  const [confirmPassword, setConfirmPassword] = useState("password");
 
-  const onRegisterLinkPress = () => {
-    navigation.navigate("Register");
+  const onLoginLinkPress = () => {
+    props.navigation.goBack();
   };
 
   return (
@@ -29,7 +28,7 @@ export default function LoginScreen(props) {
         style={styles.backgroundImage}
       >
         <View style={styles.inputBlock}>
-          <Text style={styles.inputTitle}>Welcome back!</Text>
+          <Text style={styles.inputTitle}>Create account</Text>
           <TextInput
             style={styles.inputField}
             placeholder="Username"
@@ -41,13 +40,18 @@ export default function LoginScreen(props) {
             secureTextEntry
             onChangeText={(text) => setPassword(text)}
           />
-          <LoginButton
-            user={{ username, password }}
-            navigation={{ navigation }}
+          <TextInput
+            style={styles.inputField}
+            placeholder="Confirm password"
+            secureTextEntry
+            onChangeText={(text) => setConfirmPassword(text)}
           />
-          <Pressable onPress={() => onRegisterLinkPress()}>
+          <RegisterButton
+            user={{ username, password, confirmPassword }}
+          />
+          <Pressable onPress={() => onLoginLinkPress()}>
             <Text style={styles.registerLinkText}>
-              Don't have an account yet? Register
+              Already have an account yet? Login
             </Text>
           </Pressable>
         </View>
