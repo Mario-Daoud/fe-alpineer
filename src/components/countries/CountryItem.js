@@ -7,7 +7,6 @@ import { BLOB_URL } from "@env";
 
 export default function CountryItem(props) {
   const { country, navigation } = props;
-  const imageDimention = 0.3 * Dimensions.get("window").width;
 
   const onCountryPress = () => {
     navigation.navigate("CountryLocations", { country });
@@ -16,11 +15,7 @@ export default function CountryItem(props) {
   return (
     <Pressable onPress={() => onCountryPress()} style={styles.container}>
       <Image
-        style={{
-          width: imageDimention,
-          height: imageDimention,
-          margin: theme.PADDING.SMALL,
-        }}
+      style={styles.image}
         source={{
           uri: `${BLOB_URL}/flags/${country.name.toLowerCase()}.jpg`,
         }}
@@ -32,8 +27,16 @@ export default function CountryItem(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "flex-start",
+    padding: theme.PADDING.MEDIUM,
+    borderBottomWidth: 1,
+  },
+  image: {
+    height: 42,
+    width: 42,
+    marginRight: theme.MARGIN.MEDIUM,
   },
   text: {
     fontWeight: theme.FONTWEIGHT.SEMIBOLD,

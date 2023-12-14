@@ -20,7 +20,6 @@ export default function CountryScreen(props) {
     <View style={styles.container}>
       <FlatList
         style={{ width: "100%" }}
-        numColumns={3}
         data={countries}
         renderItem={({ item }) => (
           <CountryItem country={item} navigation={navigation} />
@@ -37,16 +36,5 @@ const styles = StyleSheet.create({
     backgroundColor: theme.PRIMARY_COLOR,
     alignItems: "center",
     justifyContent: "center",
-  },
-  save: {
-    backgroundColor: theme.PRIMARY_COLOR,
-    padding: 10,
-    borderRadius: 8,
-    width: "80%",
-    alignItems: "center",
-  },
-  saveText: {
-    color: "white",
-    fontWeight: "bold",
   },
 });

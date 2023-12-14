@@ -41,7 +41,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen
-      name="Discover"
+      name="DiscoverScreen"
       component={DiscoverNavigator}
       options={{
         headerShown: false,
@@ -52,7 +52,7 @@ const TabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Countries"
+      name="CountriesScreen"
       component={CountryNavigator}
       options={{
         headerShown: false,
@@ -63,7 +63,7 @@ const TabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Settings"
+      name="SettingsScreen"
       component={SettingsScreen}
       options={{
         headerShown: false,
