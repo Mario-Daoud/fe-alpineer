@@ -16,9 +16,9 @@ export default function RegisterScreen(props) {
   const { navigation } = props;
   const { theme } = useAppContext();
 
-  const [username, setUsername] = useState("username");
-  const [password, setPassword] = useState("password");
-  const [confirmPassword, setConfirmPassword] = useState("password");
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
 
   const onLoginLinkPress = () => {
     props.navigation.goBack();

@@ -7,6 +7,7 @@ import { API_URL } from "@env";
 export default function CountryScreen(props) {
   const { navigation } = props;
   const { theme } = useAppContext();
+
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {

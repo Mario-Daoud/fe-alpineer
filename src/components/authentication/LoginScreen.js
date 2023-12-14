@@ -15,8 +15,9 @@ import { BLOB_URL } from "@env";
 export default function LoginScreen(props) {
   const { navigation } = props;
   const { theme } = useAppContext();
-  const [username, setUsername] = useState("username");
-  const [password, setPassword] = useState("password");
+  
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
   const onRegisterLinkPress = () => {
     navigation.navigate("Register");

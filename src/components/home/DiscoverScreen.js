@@ -12,6 +12,7 @@ import { API_URL } from "@env";
 
 export default function DiscoverScreen(props) {
   const { theme } = useAppContext();
+
   const [locations, setLocations] = useState([]);
   const [filteredLocations, setFilteredLocations] = useState([]);
 

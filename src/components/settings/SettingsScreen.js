@@ -17,7 +17,6 @@ export default function SettingsScreen(props) {
   const { username } = user;
 
   const [existingUser, setExistingUser] = useState();
-
   const [password, setPassword] = useState(user.password);
 
   useEffect(() => {
