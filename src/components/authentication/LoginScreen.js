@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   ImageBackground,
   Pressable,
@@ -7,14 +7,14 @@ import {
   TextInput,
   View,
 } from "react-native";
-import theme from "../../styles/theme.style";
-
 import LoginButton from "./LoginButton";
-
+import constants from "../../styles/constants";
+import { useAppContext } from "../../../AppContext";
 import { BLOB_URL } from "@env";
 
 export default function LoginScreen(props) {
   const { navigation } = props;
+  const { theme } = useAppContext();
   const [username, setUsername] = useState("username");
   const [password, setPassword] = useState("password");
 
@@ -29,7 +29,9 @@ export default function LoginScreen(props) {
         style={styles.backgroundImage}
       >
         <View style={styles.inputBlock}>
-          <Text style={styles.inputTitle} adjustsFontSizeToFit>Welcome back!</Text>
+          <Text style={[styles.inputTitle, {color: theme.INVERTTEXT}]} adjustsFontSizeToFit>
+            Welcome back!
+          </Text>
           <TextInput
             style={styles.inputField}
             placeholder="Username"
@@ -46,7 +48,7 @@ export default function LoginScreen(props) {
             navigation={{ navigation }}
           />
           <Pressable onPress={() => onRegisterLinkPress()}>
-            <Text style={styles.registerLinkText}>
+            <Text style={[styles.registerLinkText, {color: theme.INVERTTEXT}]}>
               Don't have an account yet? Register
             </Text>
           </Pressable>
@@ -72,25 +74,25 @@ const styles = StyleSheet.create({
   },
   inputBlock: {
     width: "90%",
-    borderRadius: theme.BORDERRADIUS.MEDIUM,
+    borderRadius: constants.BORDERRADIUS.MEDIUM,
     alignSelf: "center",
   },
   inputTitle: {
-    fontSize: theme.FONTSIZE.SUPER_LARGE,
+    fontSize: constants.FONTSIZE.SUPER_LARGE,
     fontWeight: "bold",
     color: "white",
-    marginBottom: theme.MARGIN.MEDIUM,
+    marginBottom: constants.MARGIN.MEDIUM,
   },
   inputField: {
-    backgroundColor: "white",
-    borderRadius: theme.BORDERRADIUS.MEDIUM,
-    padding: theme.PADDING.MEDIUM,
-    marginBottom: theme.MARGIN.MEDIUM,
+    borderRadius: constants.BORDERRADIUS.MEDIUM,
+    padding: constants.PADDING.MEDIUM,
+    marginBottom: constants.MARGIN.MEDIUM,
+    backgroundColor: "lightgrey"
   },
   registerLinkText: {
     color: "white",
-    fontSize: theme.FONTSIZE.MEDIUM,
-    textAlign: "right",
-    marginTop: theme.MARGIN.MEDIUM,
+    fontSize: constants.FONTSIZE.MEDIUM,
+    marginTop: constants.MARGIN.MEDIUM,
+    fontWeight: constants.FONTWEIGHT.SEMIBOLD
   },
 });

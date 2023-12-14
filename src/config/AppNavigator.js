@@ -9,6 +9,7 @@ import DiscoverScreen from "../components/home/DiscoverScreen";
 import SettingsScreen from "../components/settings/SettingsScreen";
 import CountryScreen from "../components/countries/CountryScreen";
 import CountryLocaitons from "../components/countries/CountryLocations";
+import DetailScreen from "../components/details/DetailScreen";
 
 const AuthStack = createStackNavigator();
 const AuthNavigator = () => (
@@ -22,6 +23,14 @@ const DiscoverStack = createStackNavigator();
 const DiscoverNavigator = () => (
   <DiscoverStack.Navigator>
     <DiscoverStack.Screen name="Discover" component={DiscoverScreen} />
+    <DiscoverStack.Screen
+      name="Details"
+      component={DetailScreen}
+      options={({ route }) => ({
+        title: route.params.location.name,
+        headerShown: false,
+      })}
+    />
   </DiscoverStack.Navigator>
 );
 
@@ -33,6 +42,14 @@ const CountryNavigator = () => (
       name="CountryLocations"
       component={CountryLocaitons}
       options={({ route }) => ({ title: route.params.country.name })}
+    />
+    <DiscoverStack.Screen
+      name="Details"
+      component={DetailScreen}
+      options={({ route }) => ({
+        title: route.params.location.name,
+        headerShown: false,
+      })}
     />
   </CountryStack.Navigator>
 );

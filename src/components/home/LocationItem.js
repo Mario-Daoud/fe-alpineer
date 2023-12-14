@@ -1,29 +1,34 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import * as Animatable from "react-native-animatable";
-
-import theme from "../../styles/theme.style";
-
+import constants from "../../styles/constants";
+import { useAppContext } from "../../../AppContext";
 import { BLOB_URL } from "@env";
 
 export default function LocationItem(props) {
-  const { location, index } = props;
+  const { location, index, navigation } = props;
+  const { theme } = useAppContext();
+
+  const onLocationPress = () => {
+    navigation.navigate("Details", { location });
+  };
+
   return (
     <Animatable.View
       animation={"fadeInUp"}
       duration={700}
-      delay={200 + (index * 100)}
+      delay={200 + index * 100}
     >
-      <Pressable style={styles.itemContainer}>
+      <Pressable style={styles.itemContainer} onPress={() => onLocationPress()}>
         <Image
           style={styles.image}
           source={{
             uri: `${BLOB_URL}/locations/${location.name.toLowerCase()}.jpg`,
           }}
         />
-        <View style={styles.details}>
-          <Text style={styles.name}>{location.name}</Text>
-          <View style={styles.flagWrapper}>
+        <View style={[styles.details, { backgroundColor: theme.TERTIARY }]}>
+          <Text style={[styles.name, {color: theme.TEXT}]}>{location.name}</Text>
+          <View style={styles.flagContainer}>
             <Image
               style={styles.flag}
               source={{
@@ -41,10 +46,10 @@ const styles = StyleSheet.create({
   itemContainer: {
     position: "relative",
     alignSelf: "center",
-    margin: theme.MARGIN.SMALL,
+    margin: constants.MARGIN.SMALL,
     width: "94%",
     height: 212,
-    borderRadius: theme.BORDERRADIUS.MEDIUM,
+    borderRadius: constants.BORDERRADIUS.MEDIUM,
     overflow: "hidden",
     boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)",
     elevation: 8,
@@ -53,34 +58,36 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     left: 0,
-    backgroundColor: "white",
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottomLeftRadius: theme.BORDERRADIUS.MEDIUM,
-    borderBottomRightRadius: theme.BORDERRADIUS.MEDIUM,
+    borderBottomLeftRadius: constants.BORDERRADIUS.MEDIUM,
+    borderBottomRightRadius: constants.BORDERRADIUS.MEDIUM,
   },
   name: {
-    fontWeight: theme.FONTWEIGHT.NORMAL,
-    fontSize: theme.FONTSIZE.LARGE,
-    padding: theme.PADDING.SMALL,
+    fontWeight: constants.FONTWEIGHT.NORMAL,
+    fontSize: constants.FONTSIZE.LARGE,
+    padding: constants.PADDING.SMALL,
   },
   image: {
     width: "100%",
     height: "100%",
     resizeMode: "cover",
-    borderRadius: theme.BORDERRADIUS.MEDIUM,
+    borderRadius: constants.BORDERRADIUS.MEDIUM,
   },
-  flagWrapper: {
+  flagContainer: {
+    margin: constants.MARGIN.SMALL,
     borderRadius: 200,
+    width: 24,
+    height: 24,
     overflow: "hidden",
-    margin: theme.MARGIN.SMALL,
     borderColor: "black",
     borderWidth: 2,
   },
   flag: {
-    width: 24,
-    height: 24,
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
   },
 });

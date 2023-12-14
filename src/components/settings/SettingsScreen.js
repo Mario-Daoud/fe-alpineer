@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -7,46 +7,92 @@ import {
   Switch,
   Pressable,
 } from "react-native";
-import theme from "../../styles/theme.style";
+import constants from "../../styles/constants";
+import { useAppContext } from "../../../AppContext";
+import { API_URL } from "@env";
 
 export default function SettingsScreen(props) {
   const { navigation } = props;
-  const [username, setUsername] = useState("username123");
-  const [password, setPassword] = useState("password123");
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { user, theme, toggleDarkMode, isDarkMode } = useAppContext();
+  const { username } = user;
+
+  const [existingUser, setExistingUser] = useState();
+
+  const [password, setPassword] = useState(user.password);
+
+  useEffect(() => {
+    fetch(`${API_URL}/users/${username}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(response.status);
+        return response.json();
+      })
+      .then((data) => {
+        setExistingUser(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [existingUser]);
 
   const onLogoutPress = () => {
     navigation.popToTop();
   };
 
+  const onSavePress = () => {
+    const data = {
+      username: username,
+      password: password,
+    };
+
+    fetch(`${API_URL}/users/${existingUser.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.BACKGROUND }]}>
+      <Text style={[styles.title, { color: theme.TEXT }]}>Settings</Text>
       <View style={styles.switchContainer}>
-        <Text style={styles.label}>Dark Mode</Text>
+        <Text style={[styles.label, { color: theme.TEXT }]}>Dark Mode</Text>
         <Switch
-          thumbColor={isDarkMode ? "blue" : "grey"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={(value) => setIsDarkMode(value)}
+          thumbColor={isDarkMode ? "navy" : "lightgrey"}
+          onValueChange={() => toggleDarkMode()}
           value={isDarkMode}
         />
       </View>
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Username</Text>
+        <Text style={[styles.label, { color: theme.TEXT }]}>Username</Text>
         <View style={styles.inputWrapper}>
           <TextInput
-            style={styles.input}
+            style={[styles.input, styles.usernameInput]}
             placeholder="Enter your username"
             value={username}
-            onChangeText={(text) => setUsername(text)}
+            editable={false}
           />
         </View>
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Password</Text>
+        <Text style={[styles.label, { color: theme.TEXT }]}>Password</Text>
         <View style={styles.inputWrapper}>
           <TextInput
-            style={styles.input}
+            style={[styles.input, { backgroundColor: theme.SECONDARY }]}
             placeholder="Enter your password"
             secureTextEntry={true}
             value={password}
@@ -55,7 +101,7 @@ export default function SettingsScreen(props) {
         </View>
       </View>
 
-      <Pressable style={styles.save}>
+      <Pressable style={styles.save} onPress={() => onSavePress()}>
         <Text style={styles.saveText}>Save</Text>
       </Pressable>
       <Pressable style={styles.logout} onPress={() => onLogoutPress()}>
@@ -71,19 +117,24 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    padding: theme.PADDING.MEDIUM,
+    padding: constants.PADDING.MEDIUM,
+  },
+  title: {
+    fontSize: constants.FONTSIZE.SUPER_LARGE,
+    fontWeight: constants.FONTWEIGHT.BOLD,
+    marginBottom: constants.MARGIN.MEDIUM,
   },
   inputContainer: {
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: theme.PADDING.MEDIUM,
+    marginBottom: constants.PADDING.MEDIUM,
     alignItems: "center",
   },
   label: {
-    fontSize: theme.FONTSIZE.MEDIUM,
+    fontSize: constants.FONTSIZE.MEDIUM,
     width: "30%",
-    fontWeight: theme.FONTWEIGHT.SEMIBOLD,
+    fontWeight: constants.FONTWEIGHT.SEMIBOLD,
   },
   inputWrapper: {
     flex: 1,
@@ -91,43 +142,43 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     borderColor: "gray",
-    borderRadius: theme.BORDERRADIUS.SMALL,
+    borderRadius: constants.BORDERRADIUS.SMALL,
     borderWidth: 1,
-    padding: theme.PADDING.SMALL,
+    padding: constants.PADDING.SMALL,
+  },
+  usernameInput: {
+    backgroundColor: "grey",
+    color: "lightgrey",
   },
   switchContainer: {
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: theme.MARGIN.MEDIUM,
+    marginBottom: constants.MARGIN.MEDIUM,
   },
   save: {
-    padding: theme.PADDING.MEDIUM,
-    borderRadius: theme.BORDERRADIUS.SMALL,
-  },
-  save: {
-    backgroundColor: theme.COLOR.PRIMARY,
-    borderRadius: theme.BORDERRADIUS.MEDIUM,
-    padding: theme.MARGIN.MEDIUM,
+    padding: constants.PADDING.MEDIUM,
+    backgroundColor: "blue",
+    borderRadius: constants.BORDERRADIUS.SMALL,
     alignItems: "center",
     width: "60%",
-    margin: theme.MARGIN.SMALL,
+    margin: constants.MARGIN.SMALL,
   },
   saveText: {
     color: "white",
-    fontSize: theme.FONTSIZE.MEDIUM,
+    fontSize: constants.FONTSIZE.MEDIUM,
   },
   logout: {
-    borderRadius: theme.BORDERRADIUS.SMALL,
-    padding: theme.MARGIN.MEDIUM,
+    borderRadius: constants.BORDERRADIUS.SMALL,
+    padding: constants.MARGIN.MEDIUM,
     alignItems: "center",
     width: "60%",
-    margin: theme.MARGIN.SMALL,
-    backgroundColor: "red"
+    margin: constants.MARGIN.SMALL,
+    backgroundColor: "red",
   },
   logoutText: {
     color: "white",
-    fontSize: theme.FONTSIZE.MEDIUM,
+    fontSize: constants.FONTSIZE.MEDIUM,
   },
 });

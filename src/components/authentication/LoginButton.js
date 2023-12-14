@@ -1,14 +1,14 @@
 import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
-import theme from "../../styles/theme.style";
-
+import constants from "../../styles/constants";
+import { useAppContext } from "../../../AppContext";
 import { API_URL } from "@env";
 
 const onLoginPress = (props) => {
+  const { navigation, updateUser } = props;
   const { username, password } = props.user;
-  const { navigation } = props.navigation;
 
-  fetch(`${API_URL}/user/login`, {
+  fetch(`${API_URL}/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,6 +17,7 @@ const onLoginPress = (props) => {
   })
     .then((response) => {
       if (response.ok) {
+        updateUser({ username, password });
         navigation.navigate("Main");
       } else {
         console.log("Login failed");
@@ -28,12 +29,16 @@ const onLoginPress = (props) => {
 };
 
 export default function LoginButton(props) {
-  const { user, navigation } = props;
+  const { username, password } = props.user;
+  const { navigation } = props.navigation;
+  const { updateUser, theme } = useAppContext();
 
   return (
     <Pressable
-      style={styles.loginButton}
-      onPress={() => onLoginPress({ user, navigation })}
+      style={[styles.loginButton, { backgroundColor: theme.PRIMARY }]}
+      onPress={() =>
+        onLoginPress({ user: { username, password }, navigation, updateUser })
+      }
     >
       <Text style={styles.loginText}>Login</Text>
     </Pressable>
@@ -42,13 +47,12 @@ export default function LoginButton(props) {
 
 const styles = StyleSheet.create({
   loginButton: {
-    backgroundColor: theme.COLOR.PRIMARY,
-    borderRadius: theme.BORDERRADIUS.MEDIUM,
-    padding: theme.MARGIN.MEDIUM,
+    borderRadius: constants.BORDERRADIUS.MEDIUM,
+    padding: constants.MARGIN.MEDIUM,
     alignItems: "center",
   },
   loginText: {
     color: "white",
-    fontSize: theme.FONTSIZE.MEDIUM,
+    fontSize: constants.FONTSIZE.MEDIUM,
   },
 });

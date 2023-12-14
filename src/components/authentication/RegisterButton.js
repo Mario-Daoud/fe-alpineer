@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
-import theme from "../../styles/theme.style";
-
+import constants from "../../styles/constants";
+import { useAppContext } from "../../../AppContext";
 import { API_URL } from "@env";
 
 const onRegisterPress = (props) => {
@@ -13,7 +13,7 @@ const onRegisterPress = (props) => {
     return;
   }
 
-  fetch(`${API_URL}/user/register`, {
+  fetch(`${API_URL}/users/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -34,10 +34,11 @@ const onRegisterPress = (props) => {
 
 export default function RegisterButton(props) {
   const { user, navigation } = props;
+  const { theme } = useAppContext();
 
   return (
     <Pressable
-      style={styles.registerButton}
+      style={[styles.registerButton, { backgroundColor: theme.PRIMARY }]}
       onPress={() => onRegisterPress({ user, navigation })}
     >
       <Text style={styles.registerText}>Register</Text>
@@ -47,13 +48,12 @@ export default function RegisterButton(props) {
 
 const styles = StyleSheet.create({
   registerButton: {
-    backgroundColor: theme.COLOR.PRIMARY,
-    borderRadius: theme.BORDERRADIUS.MEDIUM,
-    padding: theme.MARGIN.MEDIUM,
+    borderRadius: constants.BORDERRADIUS.MEDIUM,
+    padding: constants.MARGIN.MEDIUM,
     alignItems: "center",
   },
   registerText: {
     color: "white",
-    fontSize: theme.FONTSIZE.MEDIUM,
+    fontSize: constants.FONTSIZE.MEDIUM,
   },
 });

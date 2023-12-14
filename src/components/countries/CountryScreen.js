@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Pressable, FlatList } from "react-native";
-import theme from "../../styles/theme.style";
-
+import { StyleSheet, View, FlatList } from "react-native";
 import CountryItem from "./CountryItem";
-
+import { useAppContext } from "../../../AppContext";
 import { API_URL } from "@env";
 
 export default function CountryScreen(props) {
   const { navigation } = props;
+  const { theme } = useAppContext();
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/country`)
+    fetch(`${API_URL}/countries`)
       .then((response) => response.json())
       .then((data) => setCountries(data));
   }, [countries]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.BACKGROUND}]}>
       <FlatList
         style={{ width: "100%" }}
         data={countries}
@@ -33,7 +32,6 @@ export default function CountryScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.PRIMARY_COLOR,
     alignItems: "center",
     justifyContent: "center",
   },

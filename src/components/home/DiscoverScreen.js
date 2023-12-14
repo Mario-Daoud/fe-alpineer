@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
-  Text,
-  Image,
   FlatList,
   TextInput,
 } from "react-native";
-
-import theme from "../../styles/theme.style";
 import LocationItem from "./LocationItem";
-
+import constants from "../../styles/constants";
+import { useAppContext } from "../../../AppContext";
 import { API_URL } from "@env";
 
 export default function DiscoverScreen(props) {
+  const { theme } = useAppContext();
   const [locations, setLocations] = useState([]);
   const [filteredLocations, setFilteredLocations] = useState([]);
 
@@ -28,7 +26,7 @@ export default function DiscoverScreen(props) {
   };
 
   useEffect(() => {
-    fetch(`${API_URL}/location`)
+    fetch(`${API_URL}/locations`)
       .then((response) => response.json())
       .then((json) => {
         setLocations(json), setFilteredLocations(json);
@@ -37,7 +35,7 @@ export default function DiscoverScreen(props) {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.BACKGROUND}]}>
       <TextInput
         style={styles.search}
         placeholder="Search..."
@@ -64,9 +62,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   search: {
-    margin: theme.MARGIN.SMALL,
-    padding: theme.PADDING.SMALL,
-    borderRadius: theme.BORDERRADIUS.SMALL,
+    margin: constants.MARGIN.SMALL,
+    padding: constants.PADDING.SMALL,
+    borderRadius: constants.BORDERRADIUS.SMALL,
     borderWidth: 1,
     backgroundColor: "white",
   },
