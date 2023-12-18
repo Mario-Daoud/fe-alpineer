@@ -15,6 +15,10 @@ Application that helps you explore, discover and pick out wintersport locations 
 ``` npm start ```
 4. Scan the QR code with the Expo app or go to the localhost:19006 in your browser.
 
+### How to login on the app?
+- Username: `username`
+- Password: `password`
+
 ## Resources used
 - [Design inspiration](https://dribbble.com)
 - [App state management](https://reactnative.dev/)
