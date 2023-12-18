@@ -16,8 +16,12 @@ Application that helps you explore, discover and pick out wintersport locations 
 4. Scan the QR code with the Expo app or go to the localhost:19006 in your browser.
 
 ### How to login on the app?
-- Username: `username`
-- Password: `password`
+- Main account: 
+    - Username: `username`
+    - Password: `password`
+- Test account:
+    - Username: `test`
+    - Password: `testpass`
 
 ## Resources used
 - [Design inspiration](https://dribbble.com)
