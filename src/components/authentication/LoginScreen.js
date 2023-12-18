@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
 } from "react-native";
+import PropTypes from "prop-types";
 import LoginButton from "./LoginButton";
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
@@ -58,6 +59,10 @@ export default function LoginScreen(props) {
     </View>
   );
 }
+
+LoginScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
 } from "react-native";
+import PropTypes from "prop-types";
 import RegisterButton from "./RegisterButton";
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
@@ -70,6 +71,10 @@ export default function RegisterScreen(props) {
     </View>
   );
 }
+
+RegisterScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

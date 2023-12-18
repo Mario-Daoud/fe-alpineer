@@ -1,5 +1,6 @@
 import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
+import PropTypes from "prop-types";
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
 import { API_URL } from "@env";
@@ -44,6 +45,11 @@ export default function LoginButton(props) {
     </Pressable>
   );
 }
+
+LoginButton.propTypes = {
+  user: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   loginButton: {

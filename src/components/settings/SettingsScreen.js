@@ -7,6 +7,7 @@ import {
   Switch,
   Pressable,
 } from "react-native";
+import PropTypes from "prop-types";
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
 import { API_URL } from "@env";
@@ -109,6 +110,10 @@ export default function SettingsScreen(props) {
     </View>
   );
 }
+
+SettingsScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Pressable, Text, Image } from "react-native";
+import PropTypes from "prop-types";
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
 import { BLOB_URL } from "@env";
@@ -24,6 +25,11 @@ export default function CountryItem(props) {
     </Pressable>
   );
 }
+
+CountryItem.propTypes = {
+  country: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

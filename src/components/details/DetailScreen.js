@@ -7,6 +7,7 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
+import PropTypes from "prop-types";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
@@ -94,6 +95,11 @@ export default function DetailScreen(props) {
     </View>
   );
 }
+
+DetailScreen.propTypes = {
+  route: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

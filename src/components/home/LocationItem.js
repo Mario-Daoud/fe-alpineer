@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import PropTypes from "prop-types";
 import * as Animatable from "react-native-animatable";
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
@@ -41,6 +42,12 @@ export default function LocationItem(props) {
     </Animatable.View>
   );
 }
+
+LocationItem.propTypes = {
+  location: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   itemContainer: {

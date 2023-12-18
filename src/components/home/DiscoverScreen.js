@@ -5,6 +5,7 @@ import {
   FlatList,
   TextInput,
 } from "react-native";
+import PropTypes from "prop-types";
 import LocationItem from "./LocationItem";
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
@@ -57,6 +58,10 @@ export default function DiscoverScreen(props) {
     </View>
   );
 }
+
+DiscoverScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {
