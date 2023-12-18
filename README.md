@@ -21,10 +21,10 @@ Application that helps you explore, discover and pick out wintersport locations 
 
 ## Resources used
 - [Design inspiration](https://dribbble.com)
-- [App state management](https://reactnative.dev/)
-- [App state management 2](https://react.dev/reference/react/useContext)
-- [Fit text to view](https://reactnative.dev/docs/text#adjustsfontsizetofit)
-- [Animatable](https://github.com/oblador/react-native-animatable)
+- [App state management - how do I keep track of general state?](https://reactnative.dev/)
+- [App state management 2 - how do I keep track of general state?](https://react.dev/reference/react/useContext)
+- [Fit text to view - how do I make text font scale to available space?](https://reactnative.dev/docs/text#adjustsfontsizetofit)
+- [Animatable - how do I make something slide in when I navigate to a component?](https://github.com/oblador/react-native-animatable)
 
 ## Demo
 #### Login & Register
