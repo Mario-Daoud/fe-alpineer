@@ -83,7 +83,7 @@ export default function SettingsScreen(props) {
             style={[styles.input, styles.usernameInput]}
             placeholder="Enter your username"
             value={username}
-            editable={false}
+            readOnly
           />
         </View>
       </View>

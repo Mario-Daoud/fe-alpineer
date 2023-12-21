@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
     StyleSheet,
     View,
+    TextInput
 } from "react-native";
 import PropTypes from "prop-types";
 import LocationList from "../location/LocationList"

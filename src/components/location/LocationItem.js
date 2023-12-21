@@ -7,7 +7,7 @@ import { useAppContext } from "../../../AppContext";
 import { BLOB_URL } from "@env";
 
 export default function LocationItem(props) {
-  const { location, index, navigation } = props;
+  const { location, navigation } = props;
   const { theme } = useAppContext();
 
   const onLocationPress = () => {
@@ -18,7 +18,6 @@ export default function LocationItem(props) {
     <Animatable.View
       animation={"fadeInUp"}
       duration={700}
-      delay={200 + index * 100}
     >
       <Pressable style={styles.itemContainer} onPress={() => onLocationPress()}>
         <Image
@@ -28,7 +27,9 @@ export default function LocationItem(props) {
           }}
         />
         <View style={[styles.details, { backgroundColor: theme.TERTIARY }]}>
-          <Text style={[styles.name, {color: theme.TEXT}]}>{location.name}</Text>
+          <Text style={[styles.name, { color: theme.TEXT }]}>
+            {location.name}
+          </Text>
           <View style={styles.flagContainer}>
             <Image
               style={styles.flag}
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     borderRadius: constants.BORDERRADIUS.MEDIUM,
     overflow: "hidden",
     boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)",
-    elevation: 8,
+    elevation: 4,
   },
   details: {
     position: "absolute",
