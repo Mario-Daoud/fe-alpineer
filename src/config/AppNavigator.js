@@ -9,7 +9,7 @@ import DiscoverScreen from "../components/home/DiscoverScreen";
 import SettingsScreen from "../components/settings/SettingsScreen";
 import CountryScreen from "../components/countries/CountryScreen";
 import CountryLocaitons from "../components/countries/CountryLocations";
-import DetailScreen from "../components/details/DetailScreen";
+import DetailScreen from "../components/location/DetailScreen";
 
 const AuthStack = createStackNavigator();
 const AuthNavigator = () => (

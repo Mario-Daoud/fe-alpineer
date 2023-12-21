@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import {
     StyleSheet,
     View,
-    TextInput,
 } from "react-native";
 import PropTypes from "prop-types";
-import LocationList from "../home/LocationList"
+import LocationList from "../location/LocationList"
 import constants from "../../styles/constants";
 import { useAppContext } from "../../../AppContext";
 import { API_URL } from "@env";
