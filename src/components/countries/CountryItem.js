@@ -44,9 +44,8 @@ const styles = StyleSheet.create({
     },
     image: {
         height: 52,
-        width: 52,
+        width: 72,
         marginRight: constants.MARGIN.MEDIUM,
-        borderRadius: constants.BORDERRADIUS.SMALL,
     },
     text: {
         fontWeight: constants.FONTWEIGHT.SEMIBOLD,
