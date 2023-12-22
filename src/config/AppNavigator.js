@@ -22,7 +22,11 @@ const AuthNavigator = () => (
 const DiscoverStack = createStackNavigator();
 const DiscoverNavigator = () => (
     <DiscoverStack.Navigator>
-        <DiscoverStack.Screen name="Discover" component={DiscoverScreen} />
+        <DiscoverStack.Screen
+            options={() => ({
+                headerLeft: null
+            })}
+            name="Discover" component={DiscoverScreen} />
         <DiscoverStack.Screen
             name="Details"
             component={DetailScreen}
@@ -42,7 +46,11 @@ const DiscoverNavigator = () => (
 const CountryStack = createStackNavigator();
 const CountryNavigator = () => (
     <CountryStack.Navigator>
-        <CountryStack.Screen name="Countries" component={CountryScreen} />
+        <CountryStack.Screen
+            options={() => ({
+                headerLeft: null
+            })}
+            name="Countries" component={CountryScreen} />
         <CountryStack.Screen
             name="CountryLocations"
             component={CountryLocaitons}
