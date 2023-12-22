@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
     ImageBackground,
     Pressable,
@@ -19,12 +19,6 @@ export default function LoginScreen(props) {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
-
-    useEffect(() => {
-        setUsername("")
-        setPassword("")
-    })
-
 
     const onRegisterLinkPress = () => {
         navigation.navigate("Register");
@@ -53,7 +47,7 @@ export default function LoginScreen(props) {
                     />
                     <LoginButton
                         user={{ username, password }}
-                        navigation={{ navigation }}
+                        navigation={navigation}
                     />
                     <Pressable onPress={() => onRegisterLinkPress()}>
                         <Text style={[styles.registerLinkText, { color: theme.INVERTTEXT }]}>
