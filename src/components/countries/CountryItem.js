@@ -14,14 +14,17 @@ export default function CountryItem(props) {
   };
 
   return (
-    <Pressable onPress={() => onCountryPress()} style={styles.container}>
+    <Pressable
+      onPress={() => onCountryPress()}
+      style={[styles.container, { borderColor: theme.TEXT }]}
+    >
       <Image
         style={styles.image}
         source={{
           uri: `${BLOB_URL}/flags/${country.name.toLowerCase()}.jpg`,
         }}
       />
-      <Text style={[styles.text, {color: theme.TEXT}]}>{country.name}</Text>
+      <Text style={[styles.text, { color: theme.TEXT }]}>{country.name}</Text>
     </Pressable>
   );
 }
@@ -36,13 +39,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    padding: constants.PADDING.MEDIUM,
+    padding: constants.PADDING.SMALL,
     borderBottomWidth: 1,
   },
   image: {
-    height: 42,
-    width: 42,
+    height: 52,
+    width: 52,
     marginRight: constants.MARGIN.MEDIUM,
+    borderRadius: constants.BORDERRADIUS.SMALL,
   },
   text: {
     fontWeight: constants.FONTWEIGHT.SEMIBOLD,
