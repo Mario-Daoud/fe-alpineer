@@ -26,6 +26,10 @@ export default function DetailScreen(props) {
         navigation.navigate("CountryLocations", { country: country })
     }
 
+    onFlagPress.propTypes = {
+        country: PropTypes.string.isRequired,
+    };
+
     return (
         <View style={styles.container}>
             <Pressable

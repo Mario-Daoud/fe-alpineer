@@ -33,6 +33,11 @@ const onRegisterPress = (props) => {
     });
 };
 
+onRegisterPress.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+};
+
 export default function RegisterButton(props) {
   const { user, navigation } = props;
   const { theme } = useAppContext();

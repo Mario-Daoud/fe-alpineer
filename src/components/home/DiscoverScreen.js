@@ -27,6 +27,10 @@ export default function DiscoverScreen(props) {
         setFilteredLocations(filteredLocations);
     };
 
+    filterLocations.propTypes = {
+        text: PropTypes.string.isRequired,
+    };
+
     useEffect(() => {
         fetch(`${API_URL}/locations`)
             .then((response) => response.json())

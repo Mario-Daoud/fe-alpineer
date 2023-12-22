@@ -22,7 +22,7 @@ export default function RegisterScreen(props) {
   const [confirmPassword, setConfirmPassword] = useState();
 
   const onLoginLinkPress = () => {
-    props.navigation.goBack();
+    navigation.goBack();
   };
 
   return (

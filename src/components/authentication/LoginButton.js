@@ -28,6 +28,12 @@ const onLoginPress = (props) => {
         });
 };
 
+onLoginPress.propTypes = {
+    navigation: PropTypes.object.isRequired,
+    updateUser: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+};
+
 export default function LoginButton(props) {
     const { navigation, user: { username, password } } = props;
     const { updateUser, theme } = useAppContext();
