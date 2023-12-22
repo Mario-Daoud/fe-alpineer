@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import LocationList from "../location/LocationList"
-import { useAppContext } from "../../../AppContext";
+import { useAppContext } from "../../contexts/AppContext";
 import { API_URL } from "@env";
 
 export default function CountryLocaitons(props) {

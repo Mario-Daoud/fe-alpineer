@@ -10,7 +10,7 @@ import {
 import PropTypes from "prop-types";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import constants from "../../styles/constants";
-import { useAppContext } from "../../../AppContext";
+import { useAppContext } from "../../contexts/AppContext";
 import { BLOB_URL } from "@env";
 
 export default function DetailScreen(props) {

@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import PropTypes from "prop-types";
 import * as Animatable from "react-native-animatable";
 import constants from "../../styles/constants";
-import { useAppContext } from "../../../AppContext";
+import { useAppContext } from "../../contexts/AppContext";
 import { BLOB_URL } from "@env";
 
 export default function LocationItem(props) {

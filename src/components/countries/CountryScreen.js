@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import PropTypes from "prop-types";
 import CountryItem from "./CountryItem";
-import { useAppContext } from "../../../AppContext";
+import { useAppContext } from "../../contexts/AppContext";
 import { API_URL } from "@env";
 
 export default function CountryScreen(props) {

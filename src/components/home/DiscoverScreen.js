@@ -7,7 +7,7 @@ import {
 import PropTypes from "prop-types";
 import LocationList from "../location/LocationList"
 import constants from "../../styles/constants";
-import { useAppContext } from "../../../AppContext";
+import { useAppContext } from "../../contexts/AppContext";
 import { API_URL } from "@env";
 
 export default function DiscoverScreen(props) {
