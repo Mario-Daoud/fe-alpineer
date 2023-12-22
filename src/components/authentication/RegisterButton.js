@@ -6,8 +6,7 @@ import { useAppContext } from "../../contexts/AppContext";
 import { API_URL } from "@env";
 
 const onRegisterPress = (props) => {
-  const { username, password, confirmPassword } = props.user;
-  const { navigation } = props.navigation;
+  const { navigation, user: {username, password, confirmPassword }} = props;
 
   if (password !== confirmPassword) {
     console.log("Passwords do not match");

@@ -46,7 +46,6 @@ export default function LocationItem(props) {
 
 LocationItem.propTypes = {
   location: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
   navigation: PropTypes.object.isRequired,
 };
 

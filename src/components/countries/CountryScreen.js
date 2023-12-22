@@ -15,7 +15,7 @@ export default function CountryScreen(props) {
     fetch(`${API_URL}/countries`)
       .then((response) => response.json())
       .then((data) => setCountries(data));
-  }, [countries]);
+  }, []);
 
   return (
     <View style={[styles.container, {backgroundColor: theme.BACKGROUND}]}>

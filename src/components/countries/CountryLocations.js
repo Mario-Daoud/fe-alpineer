@@ -10,17 +10,17 @@ export default function CountryLocaitons(props) {
     const { navigation } = props;
     const { theme } = useAppContext();
 
-    const [countries, setCountries] = useState([]);
+    const [locations, setLocations] = useState([]);
 
     useEffect(() => {
         fetch(`${API_URL}/locations/country/${country}`)
             .then((response) => response.json())
-            .then((data) => setCountries(data));
+            .then((data) => setLocations(data));
     }, []);
 
     return (
         <View style={[styles.container, { backgroundColor: theme.BACKGROUND }]}>
-            <LocationList locations={countries} navigation={navigation} />
+            <LocationList locations={locations} navigation={navigation} />
         </View>
     );
 }
