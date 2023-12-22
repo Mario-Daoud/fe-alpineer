@@ -17,8 +17,8 @@ export default function LoginScreen(props) {
   const { navigation } = props;
   const { theme } = useAppContext();
   
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("username");
+  const [password, setPassword] = useState("password");
 
   const onRegisterLinkPress = () => {
     navigation.navigate("Register");
