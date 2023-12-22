@@ -19,6 +19,15 @@ export default function SettingsScreen(props) {
 
     const [existingUser, setExistingUser] = useState();
     const [password, setPassword] = useState(user.password);
+    const [isVisible, setIsVisible] = useState(false)
+
+    const showModal = () => {
+        setIsVisible(true)
+
+        setTimeout(() => {
+            setIsVisible(false)
+        }, 2000)
+    }
 
     useEffect(() => {
         fetch(`${API_URL}/users/${username}`, {
@@ -47,7 +56,7 @@ export default function SettingsScreen(props) {
         const data = {
             username: username,
             password: password,
-        };
+        }
 
         fetch(`${API_URL}/users/${existingUser.id}`, {
             method: "PUT",
@@ -57,8 +66,8 @@ export default function SettingsScreen(props) {
             body: JSON.stringify(data),
         })
             .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
+            .then(() => {
+                showModal()
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -80,6 +89,7 @@ export default function SettingsScreen(props) {
                 <Text style={[styles.label, { color: theme.TEXT }]}>Username</Text>
                 <View style={styles.inputWrapper}>
                     <TextInput
+                        style={[styles.input, styles.usernameInput]}
                         placeholder="Enter your username"
                         value={username}
                         readOnly
@@ -99,6 +109,11 @@ export default function SettingsScreen(props) {
                     />
                 </View>
             </View>
+
+            {isVisible && <View style={styles.modalContainer}>
+                <Text style={{ fontSize: constants.FONTSIZE.LARGE }}>Successfully updated user</Text>
+            </View>
+            }
 
             <Pressable style={styles.save} onPress={() => onSavePress()}>
                 <Text style={styles.saveText}>Save</Text>
@@ -183,5 +198,14 @@ const styles = StyleSheet.create({
     logoutText: {
         color: "white",
         fontSize: constants.FONTSIZE.MEDIUM,
+    },
+    modalContainer: {
+        position: "absolute",
+        backgroundColor: "lightgreen",
+        padding: constants.PADDING.LARGE,
+        borderRadius: constants.BORDERRADIUS.SMALL,
+        alignItems: "center",
+        alignSelf: "center",
+        width: 300
     },
 });

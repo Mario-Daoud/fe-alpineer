@@ -10,7 +10,6 @@ export default function CountryItem(props) {
     const { theme } = useAppContext();
 
     const onCountryPress = () => {
-        console.log(country.name)
         navigation.navigate("CountryLocations", {country: country.name});
     };
 
