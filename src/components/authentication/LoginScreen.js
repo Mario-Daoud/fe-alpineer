@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     borderRadius: constants.BORDERRADIUS.MEDIUM,
     padding: constants.PADDING.MEDIUM,
     marginBottom: constants.MARGIN.MEDIUM,
-    backgroundColor: "lightgrey"
+    backgroundColor: "white"
   },
   registerLinkText: {
     color: "white",

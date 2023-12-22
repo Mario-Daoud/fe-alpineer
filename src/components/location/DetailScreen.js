@@ -54,7 +54,7 @@ export default function DetailScreen(props) {
                 <Text style={[styles.title, styles.overviewTitle, { color: theme.TEXT }]}>Overview</Text>
                 <View style={styles.locationDetails}>
                     <Text style={[styles.locatedIn, { color: theme.TEXT }]}>Located in:</Text>
-                    <Text style={{ fontSize: constants.FONTSIZE.MEDIUM, marginRight: constants.MARGIN.MEDIUM }}>{location.country}</Text>
+                    <Text style={{ fontSize: constants.FONTSIZE.MEDIUM, marginRight: constants.MARGIN.MEDIUM, color: theme.TEXT }}>{location.country}</Text>
                     <Pressable onPress={() => onFlagPress(location.country)}>
                         <Image
                             style={{ height: 48, width: 72 }}
@@ -62,12 +62,12 @@ export default function DetailScreen(props) {
                         />
                     </Pressable>
                 </View>
-                <Text style={{ marginTop: constants.MARGIN.SMALL, marginBottom: constants.MARGIN.LARGE }}>(click the flag to discover other locations)</Text>
+                <Text style={{ marginTop: constants.MARGIN.SMALL, marginBottom: constants.MARGIN.LARGE }}>(click the flag to discover other locations in {location.country})</Text>
                 <Text style={[styles.description, { color: theme.TEXT }]}>
-                    Description: {location.description}
+                    <Text style={{fontWeight: constants.FONTWEIGHT.SEMIBOLD}}>Description:</Text> {location.description}
                 </Text>
                 <Text style={[styles.description, { color: theme.TEXT }]}>
-                    Avg. rating: {location.averageRating}
+                    <Text style={{fontWeight: constants.FONTWEIGHT.SEMIBOLD}}>Avg. rating:</Text> {location.averageRating}
                 </Text>
 
                 <Text style={[styles.title, styles.generalInfoTitle, { color: theme.TEXT }]}>
