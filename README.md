@@ -8,12 +8,18 @@ Application that helps you explore, discover and pick out wintersport locations 
 
 ### How to run?
 1. Clone the repo <br>
-``` git clone ```
-2. Install dependencies <br>
-``` npm install ```
-3. Run the app <br>
-``` npm start ```
-4. Scan the QR code with the Expo app or go to the localhost:19006 in your browser.
+```bash
+$ git clone
+```
+3. Install dependencies <br>
+```bash
+$ npm install
+```
+5. Run the app <br>
+```bash
+$ npm start
+```
+7. Scan the QR code with the Expo app or go to the localhost:19006 in your browser.
 
 ### How to login on the app?
 - username: `eval`
@@ -28,8 +34,8 @@ Application that helps you explore, discover and pick out wintersport locations 
 
 ## Demo
 #### Login & Register
-![login](https://github.com/Mario-Daoud/frontend-alpineer/assets/113902874/3b501792-b012-47c1-ba6d-f6e4401ca554)
-![register](https://github.com/Mario-Daoud/frontend-alpineer/assets/113902874/1030d297-ed1d-4955-940a-6c4c4e3d28ae)
+![login](https://github.com/Mario-Daoud/frontend-alpineer/assets/113902874/7eb8e71c-2000-4403-8146-d22ebb387021)
+![register](https://github.com/Mario-Daoud/frontend-alpineer/assets/113902874/4a3649a7-7721-4bd2-a67b-a6e4a724fb1b)
 
 #### Discover - homepage
 ![discover](https://github.com/Mario-Daoud/frontend-alpineer/assets/113902874/3fc0fb85-cc40-4911-80e7-c58be5c79cd0)
