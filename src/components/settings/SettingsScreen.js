@@ -19,13 +19,23 @@ export default function SettingsScreen(props) {
 
     const [existingUser, setExistingUser] = useState();
     const [password, setPassword] = useState(user.password);
-    const [isVisible, setIsVisible] = useState(false)
+    const [isSuccessVisible, setIsSuccessVisible] = useState(false)
+    const [isErrorVisible, setIsErrorVisible] = useState(false)
 
-    const showModal = () => {
-        setIsVisible(true)
+
+    const showSuccessModal = () => {
+        setIsSuccessVisible(true)
 
         setTimeout(() => {
-            setIsVisible(false)
+            setIsSuccessVisible(false)
+        }, 2000)
+    }
+
+    const showErrorModal = () => {
+        setIsErrorVisible(true)
+
+        setTimeout(() => {
+            setIsErrorVisible(false)
         }, 2000)
     }
 
@@ -46,11 +56,11 @@ export default function SettingsScreen(props) {
             .catch((error) => {
                 console.error(error);
             });
-    }, [existingUser]);
+    }, []);
 
     const onLogoutPress = () => {
         navigation.popToTop();
-    };
+    }
 
     const onSavePress = () => {
         const data = {
@@ -65,11 +75,15 @@ export default function SettingsScreen(props) {
             },
             body: JSON.stringify(data),
         })
-            .then((response) => response.json())
-            .then(() => {
-                showModal()
+            .then((response) => {
+                if (response.status === 200) {
+                    showSuccessModal()
+                } else {
+                    showErrorModal()
+                }
             })
             .catch((error) => {
+                showErrorModal()
                 console.error("Error:", error);
             });
     };
@@ -110,8 +124,12 @@ export default function SettingsScreen(props) {
                 </View>
             </View>
 
-            {isVisible && <View style={styles.modalContainer}>
+            {isSuccessVisible && <View style={[styles.modalSuccessContainer, styles.modal]}>
                 <Text style={{ fontSize: constants.FONTSIZE.LARGE }}>Successfully updated user</Text>
+            </View>
+            }
+            {isErrorVisible && <View style={[styles.modalErrorContainer, styles.modal]}>
+                <Text style={{ fontSize: constants.FONTSIZE.LARGE }}>Error while updating user</Text>
             </View>
             }
 
@@ -199,13 +217,18 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: constants.FONTSIZE.MEDIUM,
     },
-    modalContainer: {
+    modal: {
         position: "absolute",
-        backgroundColor: "lightgreen",
         padding: constants.PADDING.LARGE,
         borderRadius: constants.BORDERRADIUS.SMALL,
         alignItems: "center",
         alignSelf: "center",
         width: 300
+    },
+    modalSuccessContainer: {
+        backgroundColor: "lightgreen",
+    },
+    modalErrorContainer: {
+        backgroundColor: "red",
     },
 });
