@@ -207,8 +207,8 @@ const styles = StyleSheet.create({
     },
     infoImage: {
         padding: constants.PADDING.SMALL,
-        width: 64,
-        height: 64,
+        width: 52,
+        height: 52,
     },
     infoText: {
         padding: constants.PADDING.SMALL,
