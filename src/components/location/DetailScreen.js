@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: constants.FONTSIZE.EXTRA_LARGE,
         fontWeight: constants.FONTWEIGHT.BOLD,
-        marginBottom: constants.MARGIN.SMALL,
     },
     overviewTitle: {
         marginTop: 40,
@@ -194,21 +193,19 @@ const styles = StyleSheet.create({
     infoContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingBottom: constants.PADDING.LARGE
     },
     infoBlock: {
         flexDirection: "column",
         alignItems: "center",
     },
     infoTitle: {
-        padding: constants.PADDING.SMALL,
         fontSize: constants.FONTSIZE.LARGE,
         fontWeight: constants.FONTWEIGHT.NORMAL,
     },
     infoImage: {
         padding: constants.PADDING.SMALL,
-        width: 52,
-        height: 52,
+        width: 48,
+        height: 48,
     },
     infoText: {
         padding: constants.PADDING.SMALL,
